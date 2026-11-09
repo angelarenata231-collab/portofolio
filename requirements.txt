@@ -9,3 +9,4 @@ resend
 Pillow
 email-validator
 gunicorn
+qrcode
