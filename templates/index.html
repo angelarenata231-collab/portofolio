@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block title %}Angela | Portfolio{% endblock %} {%
+﻿{% extends "base.html" %} {% block title %}Angela | Portfolio{% endblock %} {%
 block content %}
 
 <!-- =========================
@@ -9,7 +9,7 @@ block content %}
     <div class="profile-panel">
       <div class="profile-image-wrap">
         <img
-          src="{{ profile.profile_image if profile and profile.profile_image else '/static/images/profile-portrait.png' }}"
+          src="{{ profile.profile_image if profile and profile.profile_image else 'https://res.cloudinary.com/brxlfodb/image/upload/v1794218529/portfolio/profile/profile-portrait.png' }}"
           alt="{{ profile.name if profile else 'Angela' }} portrait"
         />
       </div>
@@ -124,19 +124,19 @@ block content %}
       <div class="skill-card-header">
         <div class="skill-icon">
           {% if 'Bahasa' in group_name %}
-          <span>⌨</span>
+          <span>âŒ¨</span>
           {% elif 'Framework' in group_name %}
-          <span>⚙</span>
+          <span>âš™</span>
           {% elif 'Frontend' in group_name %}
-          <span>◇</span>
+          <span>â—‡</span>
           {% elif 'Backend' in group_name %}
-          <span>⌘</span>
+          <span>âŒ˜</span>
           {% elif 'Design' in group_name %}
-          <span>✦</span>
+          <span>âœ¦</span>
           {% elif 'Tools' in group_name %}
-          <span>▣</span>
+          <span>â–£</span>
           {% else %}
-          <span>✧</span>
+          <span>âœ§</span>
           {% endif %}
         </div>
 
@@ -153,7 +153,7 @@ block content %}
 
       <div class="skill-card-footer">
         <span>Angela's Skill Set</span>
-        <span class="skill-arrow">↗</span>
+        <span class="skill-arrow">â†—</span>
       </div>
     </article>
 
@@ -184,7 +184,7 @@ block content %}
       <div class="project-document">
         <div class="document-top">
           <span>PROJECT DOCUMENT</span>
-          <span class="document-icon">✦</span>
+          <span class="document-icon">âœ¦</span>
         </div>
 
         <div class="document-line"></div>
@@ -211,7 +211,7 @@ block content %}
           class="project-link"
         >
           Lihat project
-          <span>↗</span>
+          <span>â†—</span>
         </a>
 
         {% elif 'website peminjaman barang laboratorium' in title %}
@@ -223,7 +223,7 @@ block content %}
           class="project-link"
         >
           Lihat project
-          <span>↗</span>
+          <span>â†—</span>
         </a>
 
         {% endif %}
@@ -247,7 +247,7 @@ block content %}
     <article class="experience-card">
       <div class="experience-image">
         <img
-          src="{{ url_for('static', filename='images/experience-01.jpg') }}"
+          src="https://res.cloudinary.com/brxlfodb/image/upload/v1794218531/portfolio/experience/experience-01.jpg"
           alt="Asisten Dosen Pengantar Teknologi Informasi"
         />
       </div>
@@ -267,7 +267,7 @@ block content %}
     <article class="experience-card">
       <div class="experience-image">
         <img
-          src="{{ url_for('static', filename='images/experience-02.jpg') }}"
+          src="https://res.cloudinary.com/brxlfodb/image/upload/v1794218533/portfolio/experience/experience-02.jpg"
           alt="Asisten Dosen Matematika Diskrit"
         />
       </div>
@@ -299,7 +299,7 @@ block content %}
     <article class="org-card">
       <div class="org-image">
         <img
-          src="{{ url_for('static', filename='images/organization-01.jpeg') }}"
+          src="https://res.cloudinary.com/brxlfodb/image/upload/v1794218534/portfolio/organization/organization-01.jpg"
           alt="Campus event committee"
         />
       </div>
@@ -309,7 +309,7 @@ block content %}
     <article class="org-card">
       <div class="org-image">
         <img
-          src="{{ url_for('static', filename='images/organization-02.jpeg') }}"
+          src="https://res.cloudinary.com/brxlfodb/image/upload/v1794218536/portfolio/organization/organization-02.jpg"
           alt="Student community activity"
         />
       </div>
@@ -319,7 +319,7 @@ block content %}
     <article class="org-card">
       <div class="org-image">
         <img
-          src="{{ url_for('static', filename='images/organization-03.jpeg') }}"
+          src="https://res.cloudinary.com/brxlfodb/image/upload/v1794218536/portfolio/organization/organization-03.jpg"
           alt="Volunteer event"
         />
       </div>
@@ -329,7 +329,7 @@ block content %}
     <article class="org-card">
       <div class="org-image">
         <img
-          src="{{ url_for('static', filename='images/organization-04.jpeg') }}"
+          src="https://res.cloudinary.com/brxlfodb/image/upload/v1794218537/portfolio/organization/organization-04.jpg"
           alt="Program coordinator"
         />
       </div>
@@ -348,14 +348,14 @@ block content %}
 
     <!-- <a class="btn btn-secondary certificate-view-all" href="#certificates">
       View all certificates
-      <span aria-hidden="true">↗</span>
+      <span aria-hidden="true">â†—</span>
     </a> -->
   </div>
 
   <div class="award-card">
     <div class="award-image">
       <img
-        src="{{ url_for('static', filename='images/awards.jpg') }}"
+        src="https://res.cloudinary.com/brxlfodb/image/upload/v1794218539/portfolio/awards/awards.jpg"
         alt="Awards and scholarship achievement"
       />
     </div>
@@ -399,7 +399,7 @@ block content %}
                 {{ cert.year or "Achievement" }}
             </span>
 
-            <div class="certificate-icon">✦</div>
+            <div class="certificate-icon">âœ¦</div>
 
             <h3>{{ cert.name }}</h3>
 
@@ -453,3 +453,5 @@ block content %}
 </section>
 
 {% endblock %}
+
+
