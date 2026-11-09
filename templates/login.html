@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login | Angela{% endblock %}
+
+{% block content %}
+<section class="auth-section shell-section">
+  <div class="container auth-card-wrap">
+    <div class="auth-card">
+      <p class="eyebrow">Admin access</p>
+      <h1>Login to dashboard</h1>
+
+      <form method="POST" action="{{ url_for('auth.login') }}" class="form-card">
+        <div class="field-group">
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" placeholder="admin" required />
+        </div>
+
+        <div class="field-group">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Enter password" required />
+        </div>
+
+        <button class="btn" type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

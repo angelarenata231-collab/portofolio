@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Angela portfolio showcase" />
+
+    <title>{% block title %}Angela Portfolio{% endblock %}</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="page-glow"></div>
+
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="{{ url_for('portfolio.home') }}" class="brand">
+          <span class="brand-mark">A</span>
+          <span>Angela</span>
+        </a>
+
+        <!-- MAIN NAVIGATION -->
+        <nav class="nav-links" aria-label="Main navigation">
+          <a class="nav-link" href="{{ url_for('portfolio.home') }}#about">
+            About
+          </a>
+
+          <a class="nav-link" href="{{ url_for('portfolio.home') }}#skills">
+            Skills
+          </a>
+          </a>
+
+          <a href="#projects" class="nav-link"> PROJECT </a>
+
+          <a class="nav-link" href="{{ url_for('portfolio.home') }}#experience">
+            Experience
+          </a>
+
+          <a
+            class="nav-link"
+            href="{{ url_for('portfolio.home') }}#organizations"
+          >
+            Organizations
+          </a>
+                    <!-- PROJECTS DIGANTI AWARDS -->
+          <a href="#awards" class="nav-link"> AWARDS </a>
+
+          <!-- PROJECTS DIGANTI CERTIFICATES -->
+          <a href="#certificates" class="nav-link"> CERTIFICATES </a>
+
+          <a class="nav-link" href="{{ url_for('portfolio.home') }}#contact">
+            Contact
+          </a>
+        </nav>
+
+      </div>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %}
+    <div class="container">
+      <div class="flash-list">
+        {% for category, message in messages %}
+        <div class="flash flash-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %} {% endwith %}
+
+    <main>{% block content %}{% endblock %}</main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>© <span id="year"></span> Angela Portfolio</p>
+
+        <div class="footer-links">
+          {% if profile and profile.github %}
+          <a href="{{ profile.github }}" target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+          {% endif %} {% if profile and profile.linkedin %}
+          <a href="{{ profile.linkedin }}" target="_blank" rel="noreferrer">
+            LinkedIn
+          </a>
+          {% endif %} {% if profile and profile.instagram %}
+          <a href="{{ profile.instagram }}" target="_blank" rel="noreferrer">
+            Instagram
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+{% extends "base.html" %} {% block title %}Certified | Angela Portfolio{%
+endblock %} {% block content %}
+
+<section id="certificates" class="certified-section">
+  <div class="certified-heading">
+    <p class="eyebrow">CERTIFICATES</p>
+
+    <h1>Certificate History</h1>
+
+    <p>
+      A collection of certifications and achievements from my learning journey
+      and professional development.
+    </p>
+  </div>
+
+  <div class="certified-grid">
+    {% for certificate in certificates %}
+
+    <article class="certificate-card" onclick="openCertificate(this)">
+      <div class="certificate-paper">
+        <div class="certificate-top">
+          <span class="certificate-symbol">✦</span>
+          <span class="certificate-label"> CERTIFICATE </span>
+        </div>
+
+        <div class="certificate-decoration"></div>
+
+        <p class="certificate-caption">Certificate of Achievement</p>
+
+        <h2>{{ certificate.name }}</h2>
+
+        <div class="certificate-line"></div>
+
+        <p class="certificate-issuer">{{ certificate.issuer }}</p>
+
+        <div class="certificate-bottom">
+          <span>ANGELA PORTFOLIO</span>
+          <span>✧</span>
+        </div>
+      </div>
+
+      <div class="certificate-card-footer">
+        <div>
+          <h3>{{ certificate.name }}</h3>
+          <p>{{ certificate.issuer }}</p>
+        </div>
+
+        <span class="certificate-view"> View ↗ </span>
+      </div>
+
+      <div
+        class="certificate-data"
+        hidden
+        data-name="{{ certificate.name }}"
+        data-issuer="{{ certificate.issuer }}"
+        data-description="{{ certificate.description or 'No description available.' }}"
+      ></div>
+    </article>
+
+    {% else %}
+
+    <div class="certificate-empty">
+      <span>✧</span>
+      <h3>No certificates yet</h3>
+      <p>Your certificates will appear here.</p>
+    </div>
+
+    {% endfor %}
+  </div>
+</section>
+
+<!-- CERTIFICATE POPUP -->
+
+<div
+  class="certificate-modal"
+  id="certificateModal"
+  onclick="closeCertificateOutside(event)"
+>
+  <div class="certificate-modal-content">
+    <button class="certificate-close" onclick="closeCertificate()">
+      &times;
+    </button>
+
+    <p class="eyebrow">Certificate Details</p>
+
+    <div class="modal-certificate-icon">✦</div>
+
+    <h2 id="modalCertificateName"></h2>
+
+    <p class="modal-issuer">
+      Issued by <strong id="modalCertificateIssuer"></strong>
+    </p>
+
+    <div class="modal-divider"></div>
+
+    <h4>Description</h4>
+
+    <p id="modalCertificateDescription"></p>
+
+    <button class="modal-close-button" onclick="closeCertificate()">
+      Close
+    </button>
+  </div>
+</div>
+
+<script>
+  function openCertificate(card) {
+    const data = card.querySelector(".certificate-data");
+
+    document.getElementById("modalCertificateName").textContent =
+      data.dataset.name;
+
+    document.getElementById("modalCertificateIssuer").textContent =
+      data.dataset.issuer || "Not specified";
+
+    document.getElementById("modalCertificateDescription").textContent =
+      data.dataset.description;
+
+    document.getElementById("certificateModal").classList.add("active");
+
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeCertificate() {
+    document.getElementById("certificateModal").classList.remove("active");
+
+    document.body.style.overflow = "";
+  }
+
+  function closeCertificateOutside(event) {
+    if (event.target.id === "certificateModal") {
+      closeCertificate();
+    }
+  }
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      closeCertificate();
+    }
+  });
+</script>
+
+{% endblock %}

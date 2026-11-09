@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.title }} | Angela Portfolio{% endblock %}
+
+{% block content %}
+
+<section class="container shell-section project-detail">
+
+  <div class="detail-heading">
+    <p class="eyebrow">Selected Project</p>
+
+    <h1>{{ project.title }}</h1>
+
+    <p>{{ project.summary }}</p>
+  </div>
+
+  <div class="detail-document">
+
+    <div class="detail-document-header">
+      <span>PROJECT OVERVIEW</span>
+      <span>✦</span>
+    </div>
+
+    <div class="detail-category">
+      {{ project.category }}
+    </div>
+
+    <h2>{{ project.title }}</h2>
+
+    <div class="detail-description">
+      {% for point in project.description.split('\n') %}
+        {% if point.strip() %}
+          <div class="description-item">
+            <span class="description-check">✓</span>
+            <p>{{ point.lstrip('- ').strip() }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="detail-stack">
+      <strong>Technology Stack</strong>
+      <p>{{ project.stack }}</p>
+    </div>
+
+    <div class="detail-actions">
+      <a href="{{ url_for('portfolio.index') }}#projects"
+         class="btn btn-secondary">
+        ← Back to projects
+      </a>
+
+      {% if project.link and project.link.startswith(('http://', 'https://')) %}
+      <a href="{{ project.link }}"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn">
+        Open live project ↗
+      </a>
+      {% endif %}
+    </div>
+
+  </div>
+
+</section>
+
+{% endblock %}

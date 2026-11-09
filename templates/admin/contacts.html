@@ -1,0 +1,32 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Messages | Angela{% endblock %}
+
+{% block content %}
+<section class="panel">
+  <div class="section-head">
+    <p class="eyebrow">Messages</p>
+    <h1>Incoming inquiries</h1>
+  </div>
+
+  <div class="message-list">
+    {% for item in messages %}
+      <article class="message-item">
+        <div class="message-head">
+          <div>
+            <strong>{{ item.name }}</strong>
+            <small>{{ item.email }}</small>
+          </div>
+          <form method="POST" action="{{ url_for('admin.mark_message_read', message_id=item.id) }}">
+            <button type="submit" class="chip {% if item.is_read %}read{% else %}new{% endif %}">{% if item.is_read %}Read{% else %}Mark read{% endif %}</button>
+          </form>
+        </div>
+        <p class="message-subject">{{ item.subject or 'No subject' }}</p>
+        <p>{{ item.message }}</p>
+      </article>
+    {% else %}
+      <p>No messages yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

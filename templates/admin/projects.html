@@ -1,0 +1,63 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Projects | Angela{% endblock %}
+
+{% block content %}
+<section class="panel">
+  <div class="section-head">
+    <p class="eyebrow">Projects</p>
+    <h1>Manage showcase items</h1>
+  </div>
+
+  <form method="POST" class="form-card small-form">
+    <div class="form-grid compact-grid">
+      <div class="field-group">
+        <label>Title</label>
+        <input name="title" type="text" placeholder="Project name" required />
+      </div>
+      <div class="field-group">
+        <label>Category</label>
+        <input name="category" type="text" placeholder="Branding" />
+      </div>
+      <div class="field-group full-width">
+        <label>Summary</label>
+        <input name="summary" type="text" placeholder="Short project summary" />
+      </div>
+      <div class="field-group full-width">
+        <label>Description</label>
+        <textarea name="description" rows="4" placeholder="Describe the project"></textarea>
+      </div>
+      <div class="field-group">
+        <label>Stack</label>
+        <input name="stack" type="text" placeholder="Figma, UI, Web" />
+      </div>
+      <div class="field-group">
+        <label>Image URL</label>
+        <input name="image" type="url" placeholder="https://..." />
+      </div>
+      <div class="field-group">
+        <label>Project link</label>
+        <input name="link" type="url" placeholder="https://" />
+      </div>
+      <div class="field-group checkbox-wrap">
+        <label class="checkbox-label"><input name="featured" type="checkbox" /> Featured project</label>
+      </div>
+    </div>
+    <button class="btn" type="submit">Add project</button>
+  </form>
+
+  <div class="table-list admin-list">
+    {% for item in projects %}
+      <div class="list-row list-row-space">
+        <div>
+          <strong>{{ item.title }}</strong>
+          <small>{{ item.category }}</small>
+        </div>
+        <span class="status-badge {% if item.featured %}new{% else %}read{% endif %}">{% if item.featured %}Featured{% else %}Standard{% endif %}</span>
+      </div>
+    {% else %}
+      <p>No projects yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

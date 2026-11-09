@@ -1,0 +1,62 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Profile | Angela{% endblock %}
+
+{% block content %}
+<section class="panel">
+  <div class="section-head">
+    <p class="eyebrow">Profile</p>
+    <h1>Personal details</h1>
+  </div>
+
+  <form method="POST" class="form-card">
+    <div class="form-grid">
+      <div class="field-group">
+        <label>Name</label>
+        <input name="name" type="text" value="{{ profile.name }}" required />
+      </div>
+      <div class="field-group">
+        <label>Title</label>
+        <input name="title" type="text" value="{{ profile.title }}" required />
+      </div>
+      <div class="field-group">
+        <label>Email</label>
+        <input name="email" type="email" value="{{ profile.email }}" required />
+      </div>
+      <div class="field-group">
+        <label>Phone</label>
+        <input name="phone" type="text" value="{{ profile.phone }}" />
+      </div>
+      <div class="field-group">
+        <label>Location</label>
+        <input name="location" type="text" value="{{ profile.location }}" />
+      </div>
+      <div class="field-group">
+        <label>Profile image</label>
+        <input name="profile_image" type="url" value="{{ profile.profile_image }}" />
+      </div>
+      <div class="field-group full-width">
+        <label>Hero image</label>
+        <input name="hero_image" type="url" value="{{ profile.hero_image }}" />
+      </div>
+      <div class="field-group full-width">
+        <label>Bio</label>
+        <textarea name="bio" rows="5">{{ profile.bio }}</textarea>
+      </div>
+      <div class="field-group">
+        <label>GitHub</label>
+        <input name="github" type="url" value="{{ profile.github }}" />
+      </div>
+      <div class="field-group">
+        <label>LinkedIn</label>
+        <input name="linkedin" type="url" value="{{ profile.linkedin }}" />
+      </div>
+      <div class="field-group">
+        <label>Instagram</label>
+        <input name="instagram" type="url" value="{{ profile.instagram }}" />
+      </div>
+    </div>
+    <button class="btn" type="submit">Save changes</button>
+  </form>
+</section>
+{% endblock %}

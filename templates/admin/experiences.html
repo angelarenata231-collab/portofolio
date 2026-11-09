@@ -1,0 +1,44 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Experiences | Angela{% endblock %}
+
+{% block content %}
+<section class="panel">
+  <div class="section-head">
+    <p class="eyebrow">Experience</p>
+    <h1>Work timeline</h1>
+  </div>
+
+  <form method="POST" class="form-card small-form">
+    <div class="form-grid compact-grid">
+      <div class="field-group">
+        <label>Role</label>
+        <input name="role" type="text" placeholder="Senior Designer" required />
+      </div>
+      <div class="field-group">
+        <label>Company</label>
+        <input name="company" type="text" placeholder="Studio Name" required />
+      </div>
+      <div class="field-group full-width">
+        <label>Description</label>
+        <textarea name="description" rows="4" placeholder="What was your role?"></textarea>
+      </div>
+    </div>
+    <button class="btn" type="submit">Add experience</button>
+  </form>
+
+  <div class="table-list admin-list">
+    {% for item in experiences %}
+      <div class="list-row list-row-space">
+        <div>
+          <strong>{{ item.role }}</strong>
+          <small>{{ item.company }} • {{ item.period }}</small>
+        </div>
+        <span class="chip">{{ item.period }}</span>
+      </div>
+    {% else %}
+      <p>No experiences yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

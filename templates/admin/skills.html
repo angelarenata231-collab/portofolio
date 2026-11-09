@@ -1,0 +1,52 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Skills | Angela{% endblock %}
+
+{% block content %}
+<section class="panel">
+  <div class="section-head">
+    <p class="eyebrow">Skills</p>
+    <h1>Manage skill list</h1>
+  </div>
+
+  <form method="POST" class="form-card small-form">
+    <div class="form-grid compact-grid">
+      <div class="field-group">
+        <label>Name</label>
+        <input name="name" type="text" placeholder="Example: Figma" required />
+      </div>
+      <div class="field-group">
+        <label>Category</label>
+        <input name="category" type="text" placeholder="Design" />
+      </div>
+      <div class="field-group">
+        <label>Level</label>
+        <input name="level" type="text" placeholder="Advanced" />
+      </div>
+      <div class="field-group">
+        <label>Icon</label>
+        <input name="icon" type="text" placeholder="palette" />
+      </div>
+      <div class="field-group">
+        <label>Order</label>
+        <input name="sort_order" type="number" min="1" value="1" />
+      </div>
+    </div>
+    <button class="btn" type="submit">Add skill</button>
+  </form>
+
+  <div class="table-list admin-list">
+    {% for item in skills %}
+      <div class="list-row list-row-space">
+        <div>
+          <strong>{{ item.name }}</strong>
+          <small>{{ item.category }} • {{ item.level }}</small>
+        </div>
+        <span class="chip">{{ item.icon }}</span>
+      </div>
+    {% else %}
+      <p>No skills yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

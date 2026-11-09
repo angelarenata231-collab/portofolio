@@ -1,0 +1,455 @@
+{% extends "base.html" %} {% block title %}Angela | Portfolio{% endblock %} {%
+block content %}
+
+<!-- =========================
+     HERO SECTION
+========================= -->
+<section class="hero-shell shell-section">
+  <div class="container hero-grid">
+    <div class="profile-panel">
+      <div class="profile-image-wrap">
+        <img
+          src="{{ profile.profile_image if profile and profile.profile_image else '/static/images/profile-portrait.png' }}"
+          alt="{{ profile.name if profile else 'Angela' }} portrait"
+        />
+      </div>
+    </div>
+
+    <div class="hero-copy">
+      <p class="eyebrow">Hello, I'm</p>
+
+      <div class="hero-marquee" aria-label="ANGELA RENATA EVLYNE">
+        <div class="marquee-track">
+          <span>ANGELA RENATA EVLYNE</span>
+        </div>
+      </div>
+
+      <p class="lead">
+        Saya sedang menempuh pendidikan di Fakultas Teknologi Informasi dengan
+        jurusan Teknik Informatika di Universitas Kristen Satya Wacana,
+        Salatiga.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     ABOUT SECTION
+========================= -->
+<section id="about" class="container shell-section">
+  <div class="section-head">
+    <p class="eyebrow">About me</p>
+    <h2>Profile summary</h2>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-copy">
+      <p>
+        {{ profile.bio if profile and profile.bio else 'Computer Science student
+        with a focus on Software Engineering at Satya Wacana Christian
+        University, currently in semester 7 with a GPA of 3.76/4.00. Experienced
+        in building Android applications with Kotlin, queueing systems using
+        Apache Kafka and Redis, and the Laboratory Equipment Borrowing Website
+        for the ATMI Polytechnic Lab Project. Comfortable working in teams,
+        serving as a teaching assistant, and organizing committee activities.
+        Seeking an internship in Software Development with a focus on Backend
+        and Frontend.' }}
+      </p>
+    </div>
+
+    <div class="about-boxes">
+      <div class="info-box">
+        <div class="info-head">
+          <span class="info-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v9A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-9Z"
+              />
+              <path d="m5.2 7.2 6.8 5.3 6.8-5.3" />
+            </svg>
+          </span>
+          <strong>Email</strong>
+        </div>
+        <span>angelarenata231@gmail.com</span>
+      </div>
+
+      <div class="info-box">
+        <div class="info-head">
+          <span class="info-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 2.8v3.2" />
+              <path d="M16 2.8v3.2" />
+              <rect x="4.5" y="5.2" width="15" height="15.3" rx="2.5" />
+              <path d="M4.5 9.5h15" />
+              <path d="M12 12.3v4.5" />
+              <path d="M9.2 15.8h5.6" />
+            </svg>
+          </span>
+          <strong>Tempat, Tanggal Lahir</strong>
+        </div>
+        <span>Salatiga, 23 Februari 2005</span>
+      </div>
+
+      <div class="info-box">
+        <div class="info-head">
+          <span class="info-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z" />
+              <circle cx="12" cy="10" r="2.5" />
+            </svg>
+          </span>
+          <strong>Alamat</strong>
+        </div>
+        <span>
+          Jl. Salatiga-Bringin, Kadipiro, Kauman Lor, Kec. Pabelan, Kabupaten
+          Semarang, Jawa Tengah
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     SKILLS SECTION
+========================= -->
+<section id="skills" class="container shell-section skills-section">
+  <div class="section-head">
+    <p class="eyebrow">My Expertise</p>
+    <h2>Skills & Technologies</h2>
+  </div>
+
+  <div class="skills-grid">
+    {% for group_name, items in skills|groupby('category') %}
+    <article class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-icon">
+          {% if 'Bahasa' in group_name %}
+          <span>⌨</span>
+          {% elif 'Framework' in group_name %}
+          <span>⚙</span>
+          {% elif 'Frontend' in group_name %}
+          <span>◇</span>
+          {% elif 'Backend' in group_name %}
+          <span>⌘</span>
+          {% elif 'Design' in group_name %}
+          <span>✦</span>
+          {% elif 'Tools' in group_name %}
+          <span>▣</span>
+          {% else %}
+          <span>✧</span>
+          {% endif %}
+        </div>
+
+        <span class="skill-count"> {{ items|length }} Skills </span>
+      </div>
+
+      <h3>{{ group_name }}</h3>
+
+      <div class="skill-card-tags">
+        {% for skill in items %}
+        <span class="skill-tag">{{ skill.name }}</span>
+        {% endfor %}
+      </div>
+
+      <div class="skill-card-footer">
+        <span>Angela's Skill Set</span>
+        <span class="skill-arrow">↗</span>
+      </div>
+    </article>
+
+    {% else %}
+    <div class="skills-empty">
+      <h3>No skills available</h3>
+      <p>Skills will appear here once they have been added.</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- =========================
+     PROJECTS SECTION
+========================= -->
+<section id="projects" class="container shell-section">
+  <div class="section-head">
+    <p class="eyebrow">Projects</p>
+    <h2>Projects I have built</h2>
+  </div>
+
+  <div class="project-grid">
+    {% for project in projects %} {% set title = project.title|lower %} {% if
+    'perancangan dan implementasi sistem antrean pendaftaran seminar' in title
+    or 'website peminjaman barang laboratorium' in title %}
+
+    <article class="project-card">
+      <div class="project-document">
+        <div class="document-top">
+          <span>PROJECT DOCUMENT</span>
+          <span class="document-icon">✦</span>
+        </div>
+
+        <div class="document-line"></div>
+
+        <span class="document-category"> {{ project.category }} </span>
+
+        <h3>{{ project.title }}</h3>
+
+        <p>{{ project.summary }}</p>
+
+        <div class="document-footer">
+          <span>{{ project.stack }}</span>
+          <span>Portfolio Project</span>
+        </div>
+      </div>
+
+      <div class="project-body">
+        {% if 'perancangan dan implementasi' in title %}
+
+        <a
+          href="https://uksw-workshop-platform-final.672023033.workers.dev/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-link"
+        >
+          Lihat project
+          <span>↗</span>
+        </a>
+
+        {% elif 'website peminjaman barang laboratorium' in title %}
+
+        <a
+          href="https://program-peminjaman-atmi-lvm5.vercel.app/login"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-link"
+        >
+          Lihat project
+          <span>↗</span>
+        </a>
+
+        {% endif %}
+      </div>
+    </article>
+
+    {% endif %} {% endfor %}
+  </div>
+</section>
+
+<!-- =========================
+     EXPERIENCE SECTION
+========================= -->
+<section id="experience" class="container shell-section">
+  <div class="section-head">
+    <p class="eyebrow">Work experience</p>
+    <h2>Teaching Assistant</h2>
+  </div>
+
+  <div class="experience-layout">
+    <article class="experience-card">
+      <div class="experience-image">
+        <img
+          src="{{ url_for('static', filename='images/experience-01.jpg') }}"
+          alt="Asisten Dosen Pengantar Teknologi Informasi"
+        />
+      </div>
+
+      <div class="experience-copy">
+        <span class="period">2025</span>
+
+        <h3>Asisten Dosen Pengantar Teknologi Informasi</h3>
+
+        <p>
+          Mendampingi pembelajaran konsep dasar TI, membantu mahasiswa
+          mengerjakan tugas, dan berkoordinasi dengan dosen.
+        </p>
+      </div>
+    </article>
+
+    <article class="experience-card">
+      <div class="experience-image">
+        <img
+          src="{{ url_for('static', filename='images/experience-02.jpg') }}"
+          alt="Asisten Dosen Matematika Diskrit"
+        />
+      </div>
+
+      <div class="experience-copy">
+        <span class="period">2024-2025</span>
+
+        <h3>Asisten Dosen Matematika Diskrit</h3>
+
+        <p>
+          Membimbing mahasiswa memahami materi dan menyelesaikan soal dengan
+          pendekatan logis dan sistematis.
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- =========================
+     ORGANIZATIONS SECTION
+========================= -->
+<section id="organizations" class="container shell-section">
+  <div class="section-head">
+    <p class="eyebrow">Committees</p>
+    <h2>Campus Activities</h2>
+  </div>
+
+  <div class="org-grid">
+    <article class="org-card">
+      <div class="org-image">
+        <img
+          src="{{ url_for('static', filename='images/organization-01.jpeg') }}"
+          alt="Campus event committee"
+        />
+      </div>
+      <h3>Panitia LDKM 2026</h3>
+    </article>
+
+    <article class="org-card">
+      <div class="org-image">
+        <img
+          src="{{ url_for('static', filename='images/organization-02.jpeg') }}"
+          alt="Student community activity"
+        />
+      </div>
+      <h3>Panitia FTI Days 2025</h3>
+    </article>
+
+    <article class="org-card">
+      <div class="org-image">
+        <img
+          src="{{ url_for('static', filename='images/organization-03.jpeg') }}"
+          alt="Volunteer event"
+        />
+      </div>
+      <h3>Panitia LDKM 2025</h3>
+    </article>
+
+    <article class="org-card">
+      <div class="org-image">
+        <img
+          src="{{ url_for('static', filename='images/organization-04.jpeg') }}"
+          alt="Program coordinator"
+        />
+      </div>
+      <h3>Panitia FIT Competition 2025</h3>
+    </article>
+  </div>
+</section>
+
+<!-- =========================
+     AWARDS SECTION
+========================= -->
+<section id="awards" class="container shell-section">
+  <div class="section-head">
+    <p class="eyebrow">Awards</p>
+    <h2>Achievements & Scholarships</h2>
+
+    <!-- <a class="btn btn-secondary certificate-view-all" href="#certificates">
+      View all certificates
+      <span aria-hidden="true">↗</span>
+    </a> -->
+  </div>
+
+  <div class="award-card">
+    <div class="award-image">
+      <img
+        src="{{ url_for('static', filename='images/awards.jpg') }}"
+        alt="Awards and scholarship achievement"
+      />
+    </div>
+
+    <div class="award-copy">
+      <span class="award-label">GenBI</span>
+
+      <h3>Penerima Beasiswa 2025</h3>
+
+      <p>
+        Penghargaan dan dukungan finansial untuk mahasiswa yang berprestasi
+        serta berkomitmen untuk terus berkembang dalam bidang akademik dan
+        kepemimpinan.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     CERTIFICATES SECTION
+============================== -->
+
+<section id="certificates" class="container shell-section">
+
+    <div class="section-head">
+        <p class="eyebrow">Certificates</p>
+        <h2>Certificate History</h2>
+        <p>
+            A collection of certifications and achievements
+            from my learning journey and professional development.
+        </p>
+    </div>
+
+    <div class="cert-grid">
+
+        {% for cert in certificates %}
+
+        <article class="cert-card">
+
+            <span class="year-tag">
+                {{ cert.year or "Achievement" }}
+            </span>
+
+            <div class="certificate-icon">✦</div>
+
+            <h3>{{ cert.name }}</h3>
+
+            <p>{{ cert.issuer }}</p>
+
+            <small>
+                {{ cert.description or "Certificate of Achievement" }}
+            </small>
+
+        </article>
+
+        {% else %}
+
+        <p>No certificates available.</p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!-- =========================
+     CONTACT SECTION
+========================= -->
+<section id="contact" class="contact-qr-only">
+  <div class="qr-container">
+    <div class="qr-box">
+      <img
+        src="{{ url_for('portfolio.qr_code', platform='linkedin') }}"
+        alt="LinkedIn QR Code"
+      />
+      <span>LinkedIn</span>
+    </div>
+
+    <div class="qr-box">
+      <img
+        src="{{ url_for('portfolio.qr_code', platform='instagram') }}"
+        alt="Instagram QR Code"
+      />
+      <span>Instagram</span>
+    </div>
+
+    <div class="qr-box">
+      <img
+        src="{{ url_for('portfolio.qr_code', platform='github') }}"
+        alt="GitHub QR Code"
+      />
+      <span>GitHub</span>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

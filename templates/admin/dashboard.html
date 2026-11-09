@@ -1,0 +1,55 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Dashboard | Angela{% endblock %}
+
+{% block content %}
+<section class="panel panel-top">
+  <div class="section-head inline-head">
+    <div>
+      <p class="eyebrow">Overview</p>
+      <h1>Dashboard</h1>
+    </div>
+    <a class="btn btn-small" href="{{ url_for('portfolio.home') }}" target="_blank" rel="noreferrer">View site</a>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <label>Projects</label>
+      <strong>{{ project_count }}</strong>
+    </div>
+    <div class="stat-card">
+      <label>Skills</label>
+      <strong>{{ skill_count }}</strong>
+    </div>
+    <div class="stat-card">
+      <label>Experiences</label>
+      <strong>{{ experience_count }}</strong>
+    </div>
+    <div class="stat-card">
+      <label>Unread messages</label>
+      <strong>{{ unread_messages }}</strong>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="section-head">
+    <p class="eyebrow">Inbox</p>
+    <h2>Recent messages</h2>
+  </div>
+
+  <div class="table-list">
+    {% for message in messages %}
+      <div class="list-row">
+        <div>
+          <strong>{{ message.name }}</strong>
+          <small>{{ message.email }}</small>
+        </div>
+        <span class="status-badge {% if message.is_read %}read{% else %}new{% endif %}">{% if message.is_read %}Read{% else %}New{% endif %}</span>
+      </div>
+    {% else %}
+      <p>No messages yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
