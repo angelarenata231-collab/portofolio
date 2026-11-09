@@ -124,19 +124,66 @@ block content %}
       <div class="skill-card-header">
         <div class="skill-icon">
           {% if 'Bahasa' in group_name %}
-          <span>âŒ¨</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <path
+              d="M6 9h1m3 0h1m3 0h1m3 0h1
+               M6 12h1m3 0h1m3 0h1m3 0h1
+               M8 15h8"
+            />
+          </svg>
+
           {% elif 'Framework' in group_name %}
-          <span>âš™</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M12 2v3m0 14v3M2 12h3m14 0h3
+               M4.9 4.9 7 7m10 10 2.1 2.1
+               M19.1 4.9 17 7M7 17l-2.1 2.1"
+            />
+          </svg>
+
           {% elif 'Frontend' in group_name %}
-          <span>â—‡</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m12 3 9 9-9 9-9-9 9-9Z" />
+          </svg>
+
           {% elif 'Backend' in group_name %}
-          <span>âŒ˜</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M9 7a3 3 0 1 1-3-3
+               3 3 0 0 1 3 3v10
+               a3 3 0 1 1-3-3h12
+               a3 3 0 1 1-3 3V7
+               a3 3 0 1 1 3 3H6"
+            />
+          </svg>
+
           {% elif 'Design' in group_name %}
-          <span>âœ¦</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="m12 2 2.1 7.9L22 12
+               l-7.9 2.1L12 22l-2.1-7.9
+               L2 12l7.9-2.1L12 2Z"
+            />
+          </svg>
+
           {% elif 'Tools' in group_name %}
-          <span>â–£</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4" y="4" width="6" height="6" rx="1" />
+            <rect x="14" y="4" width="6" height="6" rx="1" />
+            <rect x="4" y="14" width="6" height="6" rx="1" />
+            <rect x="14" y="14" width="6" height="6" rx="1" />
+          </svg>
+
           {% else %}
-          <span>âœ§</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="m12 2 2.1 7.9L22 12
+               l-7.9 2.1L12 22l-2.1-7.9
+               L2 12l7.9-2.1L12 2Z"
+            />
+          </svg>
           {% endif %}
         </div>
 
@@ -153,7 +200,11 @@ block content %}
 
       <div class="skill-card-footer">
         <span>Angela's Skill Set</span>
-        <span class="skill-arrow">â†—</span>
+        <span class="skill-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M7 17 17 7M8 7h9v9" />
+          </svg>
+        </span>
       </div>
     </article>
 
@@ -183,8 +234,13 @@ block content %}
     <article class="project-card">
       <div class="project-document">
         <div class="document-top">
-          <span>PROJECT DOCUMENT</span>
-          <span class="document-icon">âœ¦</span>
+          <span class="document-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="m12 2 2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1L12 2Z"
+              />
+            </svg>
+          </span>
         </div>
 
         <div class="document-line"></div>
@@ -211,7 +267,9 @@ block content %}
           class="project-link"
         >
           Lihat project
-          <span>â†—</span>
+          <svg class="inline-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 17 17 7M8 7h9v9" />
+          </svg>
         </a>
 
         {% elif 'website peminjaman barang laboratorium' in title %}
@@ -223,7 +281,9 @@ block content %}
           class="project-link"
         >
           Lihat project
-          <span>â†—</span>
+          <svg class="inline-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 17 17 7M8 7h9v9" />
+          </svg>
         </a>
 
         {% endif %}
@@ -345,11 +405,6 @@ block content %}
   <div class="section-head">
     <p class="eyebrow">Awards</p>
     <h2>Achievements & Scholarships</h2>
-
-    <!-- <a class="btn btn-secondary certificate-view-all" href="#certificates">
-      View all certificates
-      <span aria-hidden="true">â†—</span>
-    </a> -->
   </div>
 
   <div class="award-card">
@@ -379,46 +434,41 @@ block content %}
 ============================== -->
 
 <section id="certificates" class="container shell-section">
+  <div class="section-head">
+    <p class="eyebrow">Certificates</p>
+    <h2>Certificate History</h2>
+    <p>
+      A collection of certifications and achievements from my learning journey
+      and professional development.
+    </p>
+  </div>
 
-    <div class="section-head">
-        <p class="eyebrow">Certificates</p>
-        <h2>Certificate History</h2>
-        <p>
-            A collection of certifications and achievements
-            from my learning journey and professional development.
-        </p>
-    </div>
+  <div class="cert-grid">
+    {% for cert in certificates %}
 
-    <div class="cert-grid">
+    <article class="cert-card">
+      <span class="year-tag"> {{ cert.year or "Achievement" }} </span>
 
-        {% for cert in certificates %}
+      <div class="certificate-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="m12 2 2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1L12 2Z"
+          />
+        </svg>
+      </div>
+      <h3>{{ cert.name }}</h3>
 
-        <article class="cert-card">
+      <p>{{ cert.issuer }}</p>
 
-            <span class="year-tag">
-                {{ cert.year or "Achievement" }}
-            </span>
+      <small> {{ cert.description or "Certificate of Achievement" }} </small>
+    </article>
 
-            <div class="certificate-icon">âœ¦</div>
+    {% else %}
 
-            <h3>{{ cert.name }}</h3>
+    <p>No certificates available.</p>
 
-            <p>{{ cert.issuer }}</p>
-
-            <small>
-                {{ cert.description or "Certificate of Achievement" }}
-            </small>
-
-        </article>
-
-        {% else %}
-
-        <p>No certificates available.</p>
-
-        {% endfor %}
-
-    </div>
-
+    {% endfor %}
+  </div>
 </section>
 
 <!-- =========================
@@ -453,5 +503,3 @@ block content %}
 </section>
 
 {% endblock %}
-
-
