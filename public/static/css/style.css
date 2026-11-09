@@ -105,6 +105,8 @@ ul {
   background: var(--primary);
   color: #fff;
   font-weight: 800;
+  overflow: hidden;
+
 }
 
 .nav-links {
@@ -2172,4 +2174,27 @@ html {
     width: 20px;
     height: 20px;
   }
+}
+
+/* Certificate icon: match local design */
+.certificate-icon {
+  width: 14px !important;
+  height: 14px !important;
+  min-width: 14px !important;
+  padding: 0 !important;
+  margin-top: 4px !important;
+  background: transparent !important;
+  color: #242638 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.certificate-icon svg {
+  width: 14px !important;
+  height: 14px !important;
+  fill: currentColor !important;
+  stroke: none !important;
 }
